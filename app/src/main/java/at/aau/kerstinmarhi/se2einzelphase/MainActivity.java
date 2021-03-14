@@ -22,15 +22,9 @@ public class MainActivity extends AppCompatActivity {
         send=findViewById(R.id.btn_send);
         printMessage=findViewById(R.id.txtview_serverreply);
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendData();
-            }
-        });
     }
 
-    public void sendData(){
+    public void sendData(View view){
         String data=matrNr.getText().toString();
         TCP_Client client=new TCP_Client(data);
         Thread thread=new Thread(client);
@@ -43,5 +37,29 @@ public class MainActivity extends AppCompatActivity {
 
         String serverReply=client.getMessage();
         printMessage.setText(serverReply);
+    }
+
+    public void calc(View view){
+        String enteredNumber = matrNr.getText().toString();
+        int number;
+        int sum=0;
+
+        if (enteredNumber.matches("0[0-9]*")){     //wenn Matrikelnummer mit 0 beginnt
+            enteredNumber=enteredNumber.substring(1);    //0 am Anfang wird entfernt
+            number=Integer.parseInt(enteredNumber);
+        }else {
+            number=Integer.parseInt(enteredNumber);
+        }
+
+        while (number!=0){
+            sum += (number%10);
+            number = number/10;
+        }
+
+        if (sum%2==0){
+            printMessage.setText(R.string.main_calc_even);
+        }else {
+            printMessage.setText(R.string.main_calc_odd);
+        }
     }
 }

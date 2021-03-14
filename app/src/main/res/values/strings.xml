@@ -3,4 +3,8 @@
     <string name="enter_matriculationnumber">Gib deine Matrikelnummer ein.</string>
     <string name="server_reply">Antwort vom Server</string>
     <string name="btn_send">Abschicken</string>
+    <string name="enter_hint">z.B. 01234567</string>
+    <string name="btn_calc">Berechnen</string>
+    <string name="main_calc_even">Die Quersumme der eingegebenen Matrikelnummer ist gerade.</string>
+    <string name="main_calc_odd">Die Quersumme der eingegebenen Matrikelnummer ist ungerade.</string>
 </resources>
